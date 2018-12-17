@@ -1,0 +1,17 @@
+button {
+  width: 150px;
+}
+input {
+  width: 200px;
+}
+#results-container,
+#itinerary-container {
+  margin: 10px;
+  padding: 10px;
+  border: red dashed 1px;
+}
+
+h3 {
+  margin: 10px;
+  padding: 10px;
+}

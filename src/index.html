@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles/main.css" />
+    <title>Welcome To Nasville (again)</title>
+  </head>
+  <body>
+    <div id="search-container">
+      <form>
+        <h1>Welcome to Nashville</h1>
+        <fieldset>
+          <legend> Search for stuff to do today: </legend>
+            <section>
+              <input type="text" name="parks" id="park_search_bar" placeholder="Search Parks by Feature" focus> 
+              <button type="button" id="park_search_btn">Search Parks</button>
+            </br>
+              <input type="text" name="restaurants" id="dine_search_bar" placeholder="Search Restaurants by Food Type"> 
+              <button type="button" id="dine_search_btn">Search Restaurants</button>
+            </br>
+              <input type="text" name="meetups" id="meet_search_bar" placeholder="Search Meetups by Topic"> 
+              <button type="button" id="meet_search_btn">Search Meetups</button>
+            </br>
+              <input type="text" name="concerts" id="show_search_bar" placeholder="Search Concerts by Genre"> 
+              <button type="button" id="show_search_btn">Search Live Shows</button>
+          </section>    
+      </form>
+    </div>
+    <h3>Results:</h3>
+    <div id="results-container">
+    </div>
+    <h3>Itinerary:</h3>
+    <div id="itinerary-container">
+    </div>
+
+    <script src="./scripts/data.js"></script>
+    <script src="./scripts/domComponents.js"></script>
+    <script src="./scripts/domBuilder.js"></script>
+    <script src="./scripts/main.js"></script>
+  </body>
+</html>
