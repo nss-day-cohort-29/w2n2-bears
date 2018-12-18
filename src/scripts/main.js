@@ -2,27 +2,31 @@
 // Call fetch functions
 // Handle button clicks
 
-// data.getDiningInfo();
 
 
 
 let searchRestButton = document.getElementById("dine_search_btn");
-let userRestaurantSearchValue = "";
-
+let restaurantSearchInputField = document.getElementById("dine_search_bar")
 
 searchRestButton.addEventListener("click", function(){
-    let searchInputValue = document.getElementById("dine_search_bar");
-    let userRestaurantSearchValue = searchInputValue.value;
+    let searchInputField = document.getElementById("dine_search_bar");
+    let userRestaurantSearchValue = searchInputField.value;
     console.log("userRestaurantSearchValue :" , userRestaurantSearchValue)
 
-    // console.log("Restaurants Button clicked!");
+    let x = data.getDiningInfo(userRestaurantSearchValue);
 
+    // domComponents.appendResultsInput(x);
 
 });
 
-data.getDiningInfo(userRestaurantSearchValue);
+//this code block allows for user to hit "enter" to trigger their search criteria
+restaurantSearchInputField.addEventListener("keyup", function(event){
+    if (event.keyCode === 13) {
+       document.getElementById("dine_search_btn").click();
+    }
+ });
 
-domComponents.appendResultsInput("bloop");
-domComponents.appendItineraryInput("bleep");
+// domComponents.appendItineraryInput("bleep");
 
+// data.getDiningInfo(userRestaurantSearchValue);
 // resultsContainer.innerHTML += domBuilder.resultsBuilder("Hattie B's", "hot chicken", "american");

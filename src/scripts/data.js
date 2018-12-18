@@ -3,9 +3,8 @@
  const data = {
 
 
-
-          getDiningInfo() {
-             return fetch("https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city", {
+          getDiningInfo(taco) {
+             return fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${taco}`, {
                  headers: {
                      "user-key": "e1d3af0b02cdacf4bfda4e12e2efcd99",
                     }})
@@ -22,7 +21,7 @@
 
                             let diningName = item.restaurant.name;
                             let diningAddress = item.restaurant.location.address;
-                            // let cuisineType = item.restaurant.cuisines;
+                            let cuisineType = item.restaurant.cuisines;
                             let uniqueID = item.restaurant.id;
 
                             //loops through each "item" from the BIGDATAset; adds to DOM.
@@ -31,7 +30,9 @@
                             <div>
                                 <div>
                                     <p>
-                                    ${diningName}
+                                    ${diningName}</p>
+                                    <p>
+                                    ${cuisineType}</p>
                                     <br />
                                     ${diningAddress}</p>
                                 </div>
@@ -39,10 +40,7 @@
                              </div>
                              `
 
-                            // resultsContainer.innerHTML += diningName + " "
-                            // console.log("diningName", diningName);
-                            // resultsContainer.innerHTML += cuisineType + " "
-                            // console.log("cuisineType", cuisineType);
+
                         }
                         )
 
