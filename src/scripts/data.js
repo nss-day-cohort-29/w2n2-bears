@@ -43,7 +43,8 @@
 
                         }
                         )
-
+                        // Line below is a function declared in main.js. It is Used to apply eventlisteners to every save button
+                        clickSave();
                     })
 
 
