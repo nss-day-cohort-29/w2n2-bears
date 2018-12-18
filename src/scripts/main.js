@@ -21,38 +21,30 @@ searchRestButton.addEventListener("click", function(){
 
 });
 
-//this code block allows for user to hit "enter" to trigger their search criteria
+//this code block allows for user to hit "enter key" a.k.a. keyCode=13 to trigger their search criteria
 restaurantSearchInputField.addEventListener("keyup", function(event){
     if (event.keyCode === 13) {
         document.getElementById("dine_search_btn").click();
     }
 });
 
-{/* <button type="button" id="17194287" class="saveButton">Save</button> */}
-// let saveButton = document.getElementsByClassName(".saveButton")
-// saveButton.addEventListener("click", function () {console.log("save button clicked")})
-
+// WHEN "save" button is clicked:
+let clickSave = () => {
+   // Taking all elements with class="saveButton"
+   let saveButton = document.querySelectorAll(".saveButton");
+   //    This loops through all "saveButton" elements and adds an event listener to the save buttons.
+   for(let i = 0; i < saveButton.length; i++) {
+   //    Then runs "getSavedResult" defined at line 37
+      saveButton[i].addEventListener("click", getSavedResult);
+   }
+}
 
 // This runs itineraryBuilder inside domBuilder and adds the HTML and a button class depending on what API was called.
 let getSavedResult = (event) => {
-    let savedHTML = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
-
-    console.log(savedHTML);
-
+    let restaurantName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+    // console.log(restaurantName);
     let itineraryDiv = document.getElementById("itinerary-container");
-    itineraryDiv.innerHTML += savedHTML;
+    itineraryDiv.innerHTML = `Restaurant: ${restaurantName}`;
     // let buttonClass = event.target.classList[1];
-    // domBuilder.itineraryBuilder(savedHTML, buttonClass);
- }
-
- // WHEN "save" button is clicked:
- let clickSave = () => {
-    // Taking all elements with class="saveButton"
-    let saveButton = document.querySelectorAll(".saveButton");
-    //    This loops through all "saveButton" elements and adds an event listener to the save buttons.
-    for(let i = 0; i < saveButton.length; i++) {
-    //    Then runs "getSavedResult" defined at line 37
-       saveButton[i].addEventListener("click", getSavedResult);
-    }
-
+    // domBuilder.itineraryBuilder(restaurantName, buttonClass);
  }
