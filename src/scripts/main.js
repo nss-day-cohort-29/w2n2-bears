@@ -51,7 +51,7 @@ let getSavedResult = (event) => {
     let saveButton = document.querySelectorAll(".saveButton");
     //    This loops through all "saveButton" elements and adds an event listener to the save buttons.
     for(let i = 0; i < saveButton.length; i++) {
-    //    Then runs "getSavedResult" defined at line 71
+    //    Then runs "getSavedResult" defined at line 37
        saveButton[i].addEventListener("click", getSavedResult);
     }
 
