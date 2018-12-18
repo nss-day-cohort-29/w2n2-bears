@@ -4,7 +4,7 @@
 
 
 
-         getDiningInfo() {
+          getDiningInfo() {
              return fetch("https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city", {
                  headers: {
                      "user-key": "e1d3af0b02cdacf4bfda4e12e2efcd99",
@@ -22,7 +22,8 @@
 
                             let diningName = item.restaurant.name;
                             let diningAddress = item.restaurant.location.address;
-                            let cuisineType = item.restaurant.cuisines;
+                            // let cuisineType = item.restaurant.cuisines;
+                            let uniqueID = item.restaurant.id;
 
                             //loops through each "item" from the BIGDATAset; adds to DOM.
                             resultsContainer.innerHTML +=
@@ -34,7 +35,7 @@
                                     <br />
                                     ${diningAddress}</p>
                                 </div>
-                                <button type="button" class="saveButton ${cuisineType}">Save</button>
+                                <button type="button" id="${uniqueID}"class="saveButton">Save</button>
                              </div>
                              `
 
