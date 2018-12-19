@@ -52,8 +52,13 @@ let getSavedResult = (event) => {
         let meetupName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
         let meetupDiv = document.getElementById("meetups-container");
         meetupDiv.innerHTML = `Meetup: ${meetupName}`
-      }
- }
+    } else if (event.target.classList[1] === "concertSaveButton") {
+        let concertName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+        let concertDiv = document.getElementById("concerts-container");
+        concertDiv.innerHTML = `Concert: ${concertName}`
+    }
+};
+ 
 // import from team oracle
 let parksBtn = document.getElementById("park_search_btn");
 let bloop = document.getElementById("parksearch");
@@ -73,5 +78,16 @@ searchMeetButton.addEventListener("click", function(){
     let searchInputField = document.getElementById("meet_search_bar");
     let searchInputFieldValue = searchInputField.value;
     let fetch1 = data.getMeetupInfo(searchInputFieldValue);
+    return fetch1
+});
+
+// Concert event listener
+let searchConcertButton = document.getElementById("show_search_btn");
+let concertSearchInputField = document.getElementById("show_search_bar")
+
+searchConcertButton.addEventListener("click", function(){
+    let searchInputField = document.getElementById("show_search_bar");
+    let searchInputFieldValue = searchInputField.value;
+    let fetch1 = data.getConcertInfo(searchInputFieldValue);
     return fetch1
 });
