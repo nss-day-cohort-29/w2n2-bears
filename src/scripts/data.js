@@ -36,7 +36,7 @@
                               ${parkName}
                               <p>
                           </div>
-                          <button type="button" id="bloop" class="saveButton">Save</button>
+                          <button type="button" id="${parkName}" class="saveButton parksSaveButton">Save</button>
                        </div>
                        `
 
@@ -96,7 +96,7 @@
                                     <br />
                                     ${diningAddress}</p>
                                 </div>
-                                <button type="button" id="${uniqueID}"class="saveButton">Save</button>
+                                <button type="button" id="${diningName}" class="saveButton restaurantSaveButton">Save</button>
                              </div>
                              `
 

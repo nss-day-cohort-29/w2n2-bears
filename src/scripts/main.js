@@ -46,17 +46,22 @@ let getSavedResult = (event) => {
     //add conditional; if buttonclicked = restaurant push to restaurant container;
     //else if buttonclicked = parks push to parks container
 
-    let restaurantName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
-    let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
-    // console.log("parkName", parkName)
-    // console.log(restaurantName);
-    let restaurantDiv = document.getElementById("restaurant-container");
-    restaurantDiv.innerHTML = `Restaurant: ${restaurantName}`;
+    // if (event.target.classList[0] === "restaurantSaveButton") {
+    //     console.log("restaurant button clicked")
+    // }
+    //classList[1] refers to the 2nd class that was added while the results were being generated to the Results div
+    if (event.target.classList[1] === "restaurantSaveButton") {
+        let restaurantName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+        console.log("restaurantName" , restaurantName)
+        let restaurantDiv = document.getElementById("restaurant-container");
+        return restaurantDiv.innerHTML = `Restaurant: ${restaurantName}`;
+    }
 
+    else if (event.target.classList[1] === "parksSaveButton") {
+    let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
     let parkDiv = document.getElementById("parks-container");
     parkDiv.innerHTML = `Park: ${parkName}`
-    // let buttonClass = event.target.classList[1];
-    // domBuilder.itineraryBuilder(restaurantName, buttonClass);
+    }
  }
 
 
