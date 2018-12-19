@@ -11,7 +11,9 @@ let restaurantSearchInputField = document.getElementById("dine_search_bar")
 searchRestButton.addEventListener("click", function(){
     let searchInputField = document.getElementById("dine_search_bar");
     let userRestaurantSearchValue = searchInputField.value;
-    console.log("userRestaurantSearchValue :" , userRestaurantSearchValue)
+    //console.log("userRestaurantSearchValue :" , userRestaurantSearchValue)
+    // This does some shit
+    data.getDiningInfo(userRestaurantSearchValue);
 });
 
 //this code block allows for user to hit "enter key" a.k.a. keyCode=13 to trigger their search criteria
@@ -36,12 +38,6 @@ let clickSave = () => {
 //argument being passed in, is the "click"
 let getSavedResult = (event) => {
 
-    //add conditional; if buttonclicked = restaurant push to restaurant container;
-    //else if buttonclicked = parks push to parks container
-
-    // if (event.target.classList[0] === "restaurantSaveButton") {
-    //     console.log("restaurant button clicked")
-    // }
     //classList[1] refers to the 2nd class that was added while the results were being generated to the Results div
     if (event.target.classList[1] === "restaurantSaveButton") {
         let restaurantName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
