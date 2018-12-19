@@ -4,14 +4,16 @@
 
 
 
-    name: "Data Module/Component",
+     name: "Data Module/Component",
 
-    parksArray: [],
-    //the below fetch call was modeled heavily on Dan Brewer/Team Valkyrie. with permission from Dan.
-    parksFetch (bloopvalue) {
-      fetch(`https://data.nashville.gov/resource/xbru-cfzi.json?$$app_token=9nMovoqrdCLtuY3H8ZlKhwEj1&${bloopvalue}=Yes`)
-          .then(response => response.json())
-          .then(response => {
+     parksArray: [],
+     //the below fetch call was modeled heavily on Dan Brewer/Team Valkyrie. with permission from Dan.
+     parksFetch (bloopvalue) {
+         fetch(`https://data.nashville.gov/resource/xbru-cfzi.json?$$app_token=9nMovoqrdCLtuY3H8ZlKhwEj1&${bloopvalue}=Yes`)
+         .then(response => response.json())
+         .then(response => {
+            let resultsContainer = document.getElementById("results-container")
+            resultsContainer.innerHTML = "";
               response.forEach(item => {
                 //   let parkName = parksObject.park_name;
                 //   console.log(parkName);
@@ -69,11 +71,13 @@
                     // Promise 2.
                     .then(diningReturn => {
 
+                        let resultsContainer = document.getElementById("results-container")
+                        resultsContainer.innerHTML = "";
+
                         let allDiningReturn = diningReturn.restaurants;
                         console.log("BIGDATA return from fetch: " , allDiningReturn);
                         allDiningReturn.forEach(item => {
 
-                            let resultsContainer = document.getElementById("results-container")
 
                             let diningName = item.restaurant.name;
                             let diningAddress = item.restaurant.location.address;
