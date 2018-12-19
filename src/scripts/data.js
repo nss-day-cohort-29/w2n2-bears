@@ -1,6 +1,62 @@
-// restaurant API call - Zomato
- // Fetch function established.
+
+// Fetch functions established.
  const data = {
+
+
+
+    name: "Data Module/Component",
+
+    parksArray: [],
+    //the below fetch call was modeled heavily on Dan Brewer/Team Valkyrie. with permission from Dan.
+    parksFetch (bloopvalue) {
+      fetch(`https://data.nashville.gov/resource/xbru-cfzi.json?$$app_token=9nMovoqrdCLtuY3H8ZlKhwEj1&${bloopvalue}=Yes`)
+          .then(response => response.json())
+          .then(response => {
+              response.forEach(item => {
+                //   let parkName = parksObject.park_name;
+                //   console.log(parkName);
+
+
+
+
+
+
+                      let resultsContainer = document.getElementById("results-container")
+
+                      let parkName = item.park_name;
+
+                      //loops through each "item" from the parksAPI search; adds to DOM.
+                      resultsContainer.innerHTML +=
+                      `
+                      <div>
+                          <div>
+                              <p>
+                              ${parkName}
+                              <p>
+                          </div>
+                          <button type="button" id="bloop" class="saveButton">Save</button>
+                       </div>
+                       `
+
+
+                  }
+                  )
+                  // Line below is a function declared in main.js. It is Used to apply eventlisteners to every save button
+                  clickSave();
+              })
+
+
+
+
+
+                //   let parkAddress = parksObject.mapped_location_address;
+                //   parksArray.push(parkName + " " + parkAddress);
+                //   console.log(parkName + " " + parkAddress);
+                // console.table(parksObject)
+                // })
+          },
+
+
 
 
           getDiningInfo(taco) {
@@ -52,46 +108,5 @@
                 },
 
 
-                // Called on click inside of each method (fetch) within data.js
-                // Creates HTML elements with the item name, item information, and the type of item
-                // resultType = class that's defined inside each fetch, WHICH ONLY RUNS ON CLICK "lets go!"
-                resultsBuilder(diningName, diningAddress, resultType){
-                    let resultsField =
-                    `
-                    <div>
-                    <div>
-                    <p>
-                    ${diningName}
-                    <br />
-                    ${diningAddress}</p>
-                    </div>
-                    <button type="button" class="saveButton ${resultType}">Save</button>
-                    </div>
-                    `
 
-                    return resultsField;
-                }
-
-
-
-                //from Hunter's group:
-                // Fetches all concert in the Nashville Area by restaurant and food type:
-                // restaurantData(foodType){
-                    //     fetch(`https://developers.zomato.com/api/v2.1/search?entity_id=1138&entity_type=city&q=${foodType}`, {
-                        //         headers: {
-                            //             "user-key": "0f074d9d28fb23cdabd8d271ebb03bdb"
-                            //         }
-                            //     })
-                            //     .then(foods => foods.json())
-                            //     .then(Allfoods => {
-                                //         let allfoods = Allfoods.restaurants
-                                //         allfoods.forEach(foods => {
-                                    //              let foodHTML = foods.restaurant.name;
-                                    //              let addressHTML = foods.restaurant.location.address;
-                                    //              // Line below uses 3 arguments passed through resultsBuilder, which is then passed through appendResultsInput
-                                    //              domComponents.appendResultsInput(domBuilder.resultsBuilder(foodHTML, addressHTML, "rest"));
-                                    //         })
-                                    //          // Line below is a function declared in eventlistener.js | Used to apply eventlisteners to every save button
-                                    //         clickSave();
-                                    //     })
 }
