@@ -8,17 +8,10 @@
 let searchRestButton = document.getElementById("dine_search_btn");
 let restaurantSearchInputField = document.getElementById("dine_search_bar")
 
-
-
 searchRestButton.addEventListener("click", function(){
     let searchInputField = document.getElementById("dine_search_bar");
     let userRestaurantSearchValue = searchInputField.value;
     console.log("userRestaurantSearchValue :" , userRestaurantSearchValue)
-
-    let x = data.getDiningInfo(userRestaurantSearchValue);
-
-    // domComponents.appendResultsInput(x);
-
 });
 
 //this code block allows for user to hit "enter key" a.k.a. keyCode=13 to trigger their search criteria
@@ -55,19 +48,18 @@ let getSavedResult = (event) => {
         console.log("restaurantName" , restaurantName)
         let restaurantDiv = document.getElementById("restaurant-container");
         return restaurantDiv.innerHTML = `Restaurant: ${restaurantName}`;
-    }
-
-    else if (event.target.classList[1] === "parksSaveButton") {
-    let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
-    let parkDiv = document.getElementById("parks-container");
-    parkDiv.innerHTML = `Park: ${parkName}`
-    }
+    } else if (event.target.classList[1] === "parksSaveButton") {
+      let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+      let parkDiv = document.getElementById("parks-container");
+      parkDiv.innerHTML = `Park: ${parkName}`
+    } else if (event.target.classList[1] === "meetupSaveButton") {
+        let meetupName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+        let meetupDiv = document.getElementById("meetups-container");
+        meetupDiv.innerHTML = `Meetup: ${meetupName}`
+      }
  }
-
-
-
- // import from team oracle
- let parksBtn = document.getElementById("park_search_btn");
+// import from team oracle
+let parksBtn = document.getElementById("park_search_btn");
 let bloop = document.getElementById("parksearch");
 
 parksBtn.addEventListener("click", function() {
@@ -77,3 +69,13 @@ parksBtn.addEventListener("click", function() {
     // console.log("parks search: " + fetch1);
      ;
  });
+
+let searchMeetButton = document.getElementById("meet_search_btn");
+let meetupSearchInputField = document.getElementById("meet_search_bar")
+
+searchMeetButton.addEventListener("click", function(){
+    let searchInputField = document.getElementById("meet_search_bar");
+    let searchInputFieldValue = searchInputField.value;
+    let fetch1 = data.getMeetupInfo(searchInputFieldValue);
+    return fetch1
+});
