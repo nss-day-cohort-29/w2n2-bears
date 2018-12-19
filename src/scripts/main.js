@@ -40,11 +40,40 @@ let clickSave = () => {
 }
 
 // This runs itineraryBuilder inside domBuilder and adds the HTML and a button class depending on what API was called.
+//argument being passed in, is the "click"
 let getSavedResult = (event) => {
-    let restaurantName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
-    // console.log(restaurantName);
-    let itineraryDiv = document.getElementById("itinerary-container");
-    itineraryDiv.innerHTML = `Restaurant: ${restaurantName}`;
-    // let buttonClass = event.target.classList[1];
-    // domBuilder.itineraryBuilder(restaurantName, buttonClass);
+
+    //add conditional; if buttonclicked = restaurant push to restaurant container;
+    //else if buttonclicked = parks push to parks container
+
+    // if (event.target.classList[0] === "restaurantSaveButton") {
+    //     console.log("restaurant button clicked")
+    // }
+    //classList[1] refers to the 2nd class that was added while the results were being generated to the Results div
+    if (event.target.classList[1] === "restaurantSaveButton") {
+        let restaurantName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+        console.log("restaurantName" , restaurantName)
+        let restaurantDiv = document.getElementById("restaurant-container");
+        return restaurantDiv.innerHTML = `Restaurant: ${restaurantName}`;
+    }
+
+    else if (event.target.classList[1] === "parksSaveButton") {
+    let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+    let parkDiv = document.getElementById("parks-container");
+    parkDiv.innerHTML = `Park: ${parkName}`
+    }
  }
+
+
+
+ // import from team oracle
+ let parksBtn = document.getElementById("park_search_btn");
+let bloop = document.getElementById("parksearch");
+
+parksBtn.addEventListener("click", function() {
+
+    let fetch1 = data.parksFetch(bloop.value);
+    return fetch1
+    // console.log("parks search: " + fetch1);
+     ;
+ });
