@@ -34,6 +34,40 @@ let clickSave = () => {
    }
 }
 
+// import from team oracle
+let parksBtn = document.getElementById("park_search_btn");
+let bloop = document.getElementById("parksearch");
+
+parksBtn.addEventListener("click", function() {
+
+    let fetch1 = data.parksFetch(bloop.value);
+    return fetch1
+    // console.log("parks search: " + fetch1);
+    ;
+});
+
+let searchMeetButton = document.getElementById("meet_search_btn");
+let meetupSearchInputField = document.getElementById("meet_search_bar")
+
+searchMeetButton.addEventListener("click", function(){
+    let searchInputField = document.getElementById("meet_search_bar");
+    let searchInputFieldValue = searchInputField.value;
+    let fetch1 = data.getMeetupInfo(searchInputFieldValue);
+    return fetch1
+});
+
+let searchConcertButton = document.getElementById("show_search_btn");
+// let concertSearchInputField = document.getElementById("show_search_bar")
+
+searchConcertButton.addEventListener("click", function(){
+    let searchInputField = document.getElementById("show_search_bar");
+    let searchInputFieldValue = searchInputField.value;
+    let fetch1 = data.getConcertSearch(searchInputFieldValue);
+    return fetch1
+});
+
+
+
 // This runs itineraryBuilder inside domBuilder and adds the HTML and a button class depending on what API was called.
 //argument being passed in, is the "click"
 let getSavedResult = (event) => {
@@ -45,33 +79,19 @@ let getSavedResult = (event) => {
         let restaurantDiv = document.getElementById("restaurant-container");
         return restaurantDiv.innerHTML = `Restaurant: ${restaurantName}`;
     } else if (event.target.classList[1] === "parksSaveButton") {
-      let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
-      let parkDiv = document.getElementById("parks-container");
-      parkDiv.innerHTML = `Park: ${parkName}`
+        let parkName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+        console.log("parkName" , parkName)
+        let parkDiv = document.getElementById("parks-container");
+        parkDiv.innerHTML = `Park: ${parkName}`
     } else if (event.target.classList[1] === "meetupSaveButton") {
         let meetupName = event.target.parentElement.firstElementChild.firstElementChild.innerHTML;
+        console.log("meetupName" , meetupName)
         let meetupDiv = document.getElementById("meetups-container");
         meetupDiv.innerHTML = `Meetup: ${meetupName}`
-      }
+    } else if (event.target.classList[1] === "concertSaveButton") {
+        let concertName = event.target.parentElement.firstElementChild.innerHTML;
+        let concertDiv = document.getElementById("concerts-container");
+        concertDiv.innerHTML = `Concerts: ${concertName}`
+    } else console.log("nope");
  }
-// import from team oracle
-let parksBtn = document.getElementById("park_search_btn");
-let bloop = document.getElementById("parksearch");
 
-parksBtn.addEventListener("click", function() {
-
-    let fetch1 = data.parksFetch(bloop.value);
-    return fetch1
-    // console.log("parks search: " + fetch1);
-     ;
- });
-
-let searchMeetButton = document.getElementById("meet_search_btn");
-let meetupSearchInputField = document.getElementById("meet_search_bar")
-
-searchMeetButton.addEventListener("click", function(){
-    let searchInputField = document.getElementById("meet_search_bar");
-    let searchInputFieldValue = searchInputField.value;
-    let fetch1 = data.getMeetupInfo(searchInputFieldValue);
-    return fetch1
-});
